@@ -27,10 +27,11 @@ function Nav() {
 
     return (
         <nav style ={navStyle2}>
-            <h3>Logo</h3>
+            <h3><img src={'./images/IoT.png'} alt="Logo" width="50" height="50" /></h3>
             <ul style = {navLinks}>
-                <Link style = {navStyle} to='/about'><li>About</li></Link>            
-                <Link style = {navStyle} to='/devices'><li>Devices</li></Link>            
+                <Link style = {navStyle} to='/'><li>Home</li></Link>
+                <Link style = {navStyle} to='/devices'><li>Devices</li></Link>
+                <Link style = {navStyle} to='/about'><li>About</li></Link>                                        
             </ul>
         </nav>
     );
