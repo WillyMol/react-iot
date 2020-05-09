@@ -53,4 +53,32 @@
     justify-content: center;
     padding-top: inherit;
   }
-  
+
+  .cali{
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    background-color: #8b6f47;
+    padding-bottom: 15px;
+    color: white;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.medellin{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.cucuta{
+  padding: 5px 5px;
+  background-color: #8b6f47;
+} 
+.cartagena {
+  height: 80px;
+  max-height: 80px;
+  align-items: center;
+  display: flex;
+}
+.bosa{
+  align-self : center;
+}
+

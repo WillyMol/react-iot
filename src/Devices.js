@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './devices.css';
+import { Link } from 'react-router-dom';
 
-function Devices() {
+
+const Devices = () => {
 
   useEffect(() => {
     fetchItems();
@@ -25,47 +27,22 @@ function Devices() {
         ];
         setItems(mydatabase);
   };
-
- function Device(props) {   
-  
-        let {Name: name, Place: place, State: state} = props.database; //This is object destructuring
-        const [lightStatus, setlightStatus] = useState(state); //useState is a Hook; “array destructuring”
-
-        function checkStorage(){
-          console.log(name + " " + localStorage.getItem(name))
-        }
-        
-        return (     
-          <>        
-            <div className="w3-container" style = {{paddingTop: "5px", paddingBottom: "5px"}}>
-                <ul>
-                  <li>Device: {name}</li>
-                  <li>Location: {place} </li>
-                  <li>Status: {lightStatus ? <> On </> : <> Off </>} </li>
-                </ul>
-              </div>
-            <div style = {{ maxWidth : "max-content", paddingBottom: "8px", margin : "0 auto" }}>
-            <button 
-                className="button" style={{ backgroundColor: lightStatus ? "#3e8e41" : "#4c6faf"}} 
-                onClick={() => {
-                                const lstat = !lightStatus
-                                setlightStatus(lstat);
-                                localStorage.setItem(name, lstat); 
-                                checkStorage()
-                                }}>
-                {lightStatus ? 'ON' : 'OFF'}
-            </button>        
-            </div>    
-          </>
-        );
-  }
     
   return (
-    <div className="row w3-row-padding" style={{padding:"5px 5px", backgroundColor: "#8b6f47"}}>                
+    <div className="row w3-row-padding cucuta" >                
        {  
-         items.map((element, index) => { return <div 
-         className = "col-sm-4 l3 m6 w3-margin-bottom"
-         key={index}><Device database = {element} /></div> }) 
+         items.map((element, index) => { 
+           return (
+                    <div className = "col-sm-4 l3 m6 w3-margin-bottom" key={element.Ip}>
+                        {/* <Device database = {element} /> */}
+                        <div className= "bosa">
+                        <Link to={`/devices/${element.Ip}`}>
+                          {element.Place}                          
+                        </Link>
+                        </div>
+                    </div>
+                  ); 
+          }) 
        }              
     </div>
   );
