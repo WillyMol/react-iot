@@ -1,72 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './devices.css';
+import { axiosPatchOne } from './axiosRequest'
 
 
-const DeviceDetail = ( {match} ) => {
+class DeviceDetail extends React.Component {
+	constructor(props){
+		super(props);
+        this.state = {status : props.history.location.state.itemDetail.State};
+        //this.axiosPatch = this.axiosPatch.bind(this);        		
+    }
 
-    useEffect(() => {
-        const itemId = match.params.id
-        console.log(itemId)
-        fetchItem(itemId);
-              
-    },[match]);
-    // eslint-disable-next-line
-    const [item,setItem] = useState( {  } );
-    //console.log(match.params.id)
-    const fetchItem = async (itemId) => {
-        //this line below you can use to get external data
-        /* const data = await fetch (<here the external address>);
-        const items = await data.json(); */
-
-        const mydatabase = [
-          {Ip:"192.168.1.15", Name:"ESP44GG66", Place:"Garage Door", Description:"This is a RF chip", State:false},
-          {Ip:"192.168.1.19", Name:"ESP1J3K56", Place:"Floor Lamp", Description:"This is a great device", State:true},
-          {Ip:"192.168.1.21", Name:"ESP8D7S5E", Place:"Table Lamp", Description:"The best thing ever", State:false},
-          {Ip:"192.168.1.32", Name:"ESP3G5K0S", Place:"Front Door", Description:"The last thing ever", State:true},
-          {Ip:"192.168.1.01", Name:"ESP3G5K44", Place:"Main Bedroom", Description:"It's a Nice Bed", State:false},
-          {Ip:"192.168.1.07", Name:"ESP3G5K6T", Place:"Basement", Description:"Wet basement", State:true},
-          {Ip:"192.168.1.11", Name:"ESP3G5KHY", Place:"Heater", Description:"It's cold in here", State:false},
-          {Ip:"192.168.1.25", Name:"ESP3G5K7S", Place:"Coffe Maker", Description:"Best Coffe ever", State:true},    
-          ];
-         
-          let dev = mydatabase.find(obj => obj.Ip === itemId);
-          console.log (dev);
-          setItem(dev);
-          console.log(dev.State)
-
-    };
+     /* axiosPatch = async () => {
+         const respuesta = await axiosPatchOne();
+        console.log(respuesta); 
+     }  */ 
+     
     
-
-//className="w3-container" style = {{paddingTop: "5px", paddingBottom: "5px" }}
-    return (
-        <>        
-            <div className = "cali">
-                <div className="w3-container medellin" >
-                    <ul>
-                    <li>Device: {item.Name}</li>
-                    <li>Location: {item.Place} </li>
-                    <li>Description: {item.Description} </li>
-                    <li>IP: {item.Ip} </li>
-                    <li>Status: {item.State ? <> On </> : <> Off </>} </li>
-                    </ul>
-                </div>
-                <div className = "cartagena">
-                    <button 
-                        className="button" style={{ backgroundColor: item.State ? "#3e8e41" : "#4c6faf"}}
-                        onClick={(e) => {
-                                            const val = !item.State;
-                                            setItem(prevState => {
-                                            return { ...prevState, State: val }
-                                            });                           
-                                            /* the ...prevState part will get all of the properties of 
-                                            the object and the Sate: val part will overwrite the 
-                                            message property.  */                                   
-                                        }}>
-                        {item.State ? 'ON' : 'OFF'}
-                    </button>        
-                </div>   
-            </div>             
-        </>        
-    ); 
+    render() {
+        const {Name, Place, Description, Ip } = this.props.history.location.state.itemDetail;
+        const _id = this.props.history.location.state.itemDetail._id
+        console.log(`http://localhost:5000/posts/${_id}`);
+            return (
+                <>        
+                    <div className = "cali">
+                        <div className="w3-container medellin" >
+                            <ul>
+                            <li>Device Name: {Name} </li>
+                            <li>Location: {Place} </li>
+                            <li>IP: {Ip} </li>
+                            <li>Description: {Description} </li>                            
+                            <li>State: {this.state.status ? <> On </> : <> Off </>} </li>
+                            </ul>
+                        </div>
+                        <div className = "cartagena">
+                            <button 
+                                className="button" style={{ backgroundColor: this.state.status ? "#3e8e41" : "#4c6faf"}}
+                                onClick={(e) => {                                                    
+                                                    this.setState({status: !this.state.status});
+                                                    //this.axiosPatch(this.state.status,_id);                                                                         
+                                                    axiosPatchOne(!this.state.status, _id).then(function(response) {console.log(response);});
+                                                }}>
+                                {this.state.status ? 'ON' : 'OFF'}
+                            </button>        
+                        </div>   
+                    </div>             
+                </>        
+            );
+    }         
 }
 export default DeviceDetail;

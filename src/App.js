@@ -16,7 +16,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} /> 
         <Route exact path="/about" component={About} />                   
-        <Route exact path="/devices" component={Devices} />   {/* render={() => <Devices database={this.props.database}/>} /> */}
+        <Route exact path="/devices" component={Devices} />   {/* render={() => <DeviceDetail database={this.props.database}/>} /> */}
         <Route exact path="/devices/:id" component={deviceDetail} />
       </Switch>
       </div>

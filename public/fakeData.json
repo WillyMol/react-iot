@@ -1,0 +1,65 @@
+[{
+    "_id": "5eb11b62e0a5da20qq3cb616",
+    "Name": "ESP44GG66",
+    "Place": "Garage Door",
+    "Ip": "192.168.1.15",
+    "Description": "This is a RF chip",
+    "State": false
+},
+{
+    "_id": "5eb22c05e0a5da20ss3cb617",
+    "Name": "ESP1J3K56",
+    "Place": "Floor Lamp",
+    "Ip": "192.168.1.19",
+    "Description": "This is a great device",
+    "State": true
+},
+{
+    "_id": "5eb33cb6e0a5da20ff3cb618",
+    "Name": "ESP8D7S5E",
+    "Place": "Table Lamp",
+    "Ip": "192.168.1.21",
+    "Description": "The best thing ever",
+    "State": false
+},
+{
+    "_id": "5eb44d98e0a5da20hh3cb619",
+    "Name": "ESP3G5K0S",
+    "Place": "Front Door",
+    "Ip": "192.168.1.32",
+    "Description": "The last thing ever",
+    "State": true
+},
+{
+    "_id": "5eb55daa66a5da20uu3cb61a",
+    "Name": "ESP3G5K44",
+    "Place": "Main Bedroom",
+    "Ip": "192.168.1.01",
+    "Description": "It's a Nice Bed",
+    "State": false
+},
+{
+    "_id": "5eb00daae0a5da20ii3cb61a",
+    "Name": "ESP3G5K6T",
+    "Place": "Basement",
+    "Ip": "192.168.1.07",
+    "Description": "Wet basement",
+    "State": true
+},
+{
+    "_id": "5eb22daae0a5da20ww3cb61a",
+    "Name": "ESP3G5KHY",
+    "Place": "Heater",
+    "Ip": "192.168.1.11",
+    "Description": "It's cold in here",
+    "State": false
+},
+{
+    "_id": "5ebkkdaae0a5da20fnncb61a",
+    "Name": "ESP3G5K7S",
+    "Place": "Coffe Maker",
+    "Ip": "192.168.1.25",
+    "Description": "Best Coffe ever",
+    "State": true
+}
+]
