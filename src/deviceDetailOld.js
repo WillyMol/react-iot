@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './devices.css';
 
 
+
 const DeviceDetail = ( {match}, props ) => {
 
 
@@ -62,7 +63,7 @@ const DeviceDetail = ( {match}, props ) => {
                                             return { ...prevState, State: val }
                                             });                           
                                             /* the ...prevState part will get all of the properties of 
-                                            the object and the Sate: val part will overwrite the 
+                                            the object and the State: val part will overwrite the 
                                             message property.  */                                   
                                         }}>
                         {item.State ? 'ON' : 'OFF'}

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Logo from './IoT.png';
 import { Link }  from 'react-router-dom';
 
 function Nav() {
@@ -24,10 +24,10 @@ function Nav() {
         alignItems: 'center',
         listStyle: 'none',
       }
-
+      //images/IoT.png
     return (
         <nav style ={navStyle2}>
-            <h3><img src={'./images/IoT.png'} alt="Logo" width="50" height="50" /></h3>
+            <h3><img src={Logo} alt="Logo" width="50" height="50" /></h3>
             <ul style = {navLinks}>
                 <Link style = {navStyle} to='/'><li>Home</li></Link>
                 <Link style = {navStyle} to='/devices'><li>Devices</li></Link>
