@@ -14,8 +14,8 @@ class DeviceDetail extends React.Component {
         axiosPatchOne(!this.state.isToggleOn,id)
           .then(res => {console.log(res)})
           .catch(err => {console.log(err)});      
-    }  
-      
+    }
+    
     render() {
        // const {Name, Place, Description, Ip } = this.props.history.location.state.itemDetail;
         //const _id = this.props.history.location.state.itemDetail._id
@@ -32,14 +32,18 @@ class DeviceDetail extends React.Component {
                             <li>Description: {element.Description} </li>                            
                             <li>State: {this.state.isToggleOn ? <> On </> : <> Off </>} </li>                                                        
                             </ul>
-                            <p style ={{textAlign: "center"}}><i><Link to={{
-                                                                            pathname: `/edit/${element._id}`,
+                            <p style =   {{textAlign: "center", fontSize: "16px"}}><i><Link to={{
+                                                                            pathname: `/devices/edit/${element._id}`,
                                                                             state: {itemDetail: element }                              
-                                                                           }}>Edit</Link>  | <Link to='/'>Delete</Link></i></p>
+                                                                           }}>Edit</Link>  | 
+                                                                    <Link to={{
+                                                                            pathname: `/devices/delete/${element._id}`,
+                                                                            state: {itemDetail: element }                              
+                                                                           }}>Delete</Link></i></p>
                         </div>
                         <div className = "cartagena">
                             <button 
-                                className="button" style={{ backgroundColor: this.state.isToggleOn ? "#3e8e41" : "#4c6faf"}}
+                                className="button w3-hover-cyan" style={{ backgroundColor: this.state.isToggleOn ? "#3e8e41" : "#4c6faf"}}
                                 onClick={(e) => {                                                    
                                                     this.setState({isToggleOn: !this.state.isToggleOn});                                                                                                     
                                                     this.UpdateMongoDB(element._id);

@@ -3,19 +3,19 @@ import './devices.css';
 
 import 'w3-css/w3.css';
 import '../src/radiobutton.css'
-import { axiosPatchAll } from './axiosRequest'
+import { axiosCreateOne } from './axiosRequest'
 
-class EditDevice extends React.Component {
+class AddDevice extends React.Component {
 	constructor(props){
 		super(props);
         
        this.state = {
-            _id :  props.history.location.state.itemDetail._id,
-            Name : props.history.location.state.itemDetail.Name,
-            Place : props.history.location.state.itemDetail.Place,
-            Ip : props.history.location.state.itemDetail.Ip,
-            Description : props.history.location.state.itemDetail.Description,            
-            State : props.history.location.state.itemDetail.State
+            _id :  "",
+            Name : "Device Name",
+            Place : "En la Luna",
+            Ip : "192.168.1.150",
+            Description : "Este es un dispositivo Dummy",            
+            State : false
         }; 
                 
         //console.log(this.state)      
@@ -31,7 +31,7 @@ class EditDevice extends React.Component {
 
     UpdateMongoDB = () => {
         //console.log(this.state);        
-        axiosPatchAll(this.state)
+        axiosCreateOne(this.state)
           .then(res => {
               //console.log(res);
               this.props.history.push("/devices");
@@ -70,25 +70,25 @@ class EditDevice extends React.Component {
                 <>                           
                             <div className="w3-card-4">
                                 <div className="w3-container w3-brown">
-                                    <h2>Edit Device</h2>
+                                    <h2>Add Device</h2>
                                 </div>
 
                                 <form onSubmit={this.handleSubmit} className="w3-container">
                                     <p>
                                     <label className="w3-text-brown"><b>Device Name:</b></label>
-                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Name} onChange={this.handleName}></input>
+                                    <input className="w3-input w3-border w3-sand" type="text" placeholder={this.state.Name} onChange={this.handleName}></input>
                                     </p>
                                     <p>
                                     <label className="w3-text-brown"><b>Location:</b></label>
-                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Place} onChange={this.handlePlace}></input>
+                                    <input className="w3-input w3-border w3-sand" type="text" placeholder={this.state.Place} onChange={this.handlePlace}></input>
                                     </p>
                                     <p>
                                     <label className="w3-text-brown"><b>IP:</b></label>
-                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Ip} onChange={this.handleIp}></input>
+                                    <input className="w3-input w3-border w3-sand" type="text" placeholder={this.state.Ip} onChange={this.handleIp}></input>
                                     </p>
                                     <p>
                                     <label className="w3-text-brown"><b>Description:</b></label>
-                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Description} onChange={this.handleDescription}></input>
+                                    <input className="w3-input w3-border w3-sand" type="text" placeholder={this.state.Description} onChange={this.handleDescription}></input>
                                     </p>
 
                                     <p>
@@ -105,11 +105,11 @@ class EditDevice extends React.Component {
                                     <span className="checkmark"></span>
                                     </label>
 
-                                    <p><input className="button" style={{ backgroundColor: "#3e8e41"}} type="submit" value="Submit" /></p>
+                                    <p><input className="button" style={{ backgroundColor: "#3e8e41"}} type="submit" value="Add" /></p>
                                 </form>
                             </div>                                                                                      
                 </>        
             );
     }         
 }
-export default EditDevice;
+export default AddDevice;

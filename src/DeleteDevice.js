@@ -3,9 +3,9 @@ import './devices.css';
 
 import 'w3-css/w3.css';
 import '../src/radiobutton.css'
-import { axiosPatchAll } from './axiosRequest'
+import { axiosDeleteOne } from './axiosRequest'
 
-class EditDevice extends React.Component {
+class DeleteDevice extends React.Component {
 	constructor(props){
 		super(props);
         
@@ -30,8 +30,8 @@ class EditDevice extends React.Component {
       }
 
     UpdateMongoDB = () => {
-        //console.log(this.state);        
-        axiosPatchAll(this.state)
+        //console.log(this.state._id);        
+        axiosDeleteOne(this.state._id)
           .then(res => {
               //console.log(res);
               this.props.history.push("/devices");
@@ -39,30 +39,7 @@ class EditDevice extends React.Component {
           .catch(err => {console.log(err)});      
     } 
          
-    handleName = (e) => {
-        this.setState({
-            Name: e.target.value
-        });
-    }
-    handlePlace = (e) => {
-        this.setState({
-            Place: e.target.value
-        });
-    }
-    handleIp = (e) => {
-        this.setState({
-            Ip: e.target.value
-        });
-    }
-    handleDescription = (e) => {
-        this.setState({
-            Description: e.target.value
-        });
-    }    
-    handleState = (e) => {
-        if (e.target.value === "true") this.setState( {State: true});
-        else this.setState( {State: false});
-    }
+    
     
     render() {       
         //console.log(`http://localhost:5000/posts/${_id}`);
@@ -70,25 +47,25 @@ class EditDevice extends React.Component {
                 <>                           
                             <div className="w3-card-4">
                                 <div className="w3-container w3-brown">
-                                    <h2>Edit Device</h2>
+                                    <h2>Delete Device</h2>
                                 </div>
 
                                 <form onSubmit={this.handleSubmit} className="w3-container">
                                     <p>
                                     <label className="w3-text-brown"><b>Device Name:</b></label>
-                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Name} onChange={this.handleName}></input>
+                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Name} disabled ></input>
                                     </p>
                                     <p>
                                     <label className="w3-text-brown"><b>Location:</b></label>
-                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Place} onChange={this.handlePlace}></input>
+                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Place} disabled ></input>
                                     </p>
                                     <p>
                                     <label className="w3-text-brown"><b>IP:</b></label>
-                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Ip} onChange={this.handleIp}></input>
+                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Ip} disabled ></input>
                                     </p>
                                     <p>
                                     <label className="w3-text-brown"><b>Description:</b></label>
-                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Description} onChange={this.handleDescription}></input>
+                                    <input className="w3-input w3-border w3-sand" type="text" value={this.state.Description} disabled ></input>
                                     </p>
 
                                     <p>
@@ -96,20 +73,20 @@ class EditDevice extends React.Component {
                                     </p>
 
                                     <label className="container">True
-                                    <input type="radio"  name="state" value={true} checked={this.state.State? "checked":false} onChange={this.handleState}></input>                                    
+                                    <input type="radio"  name="state" value={true} checked={this.state.State? "checked":false} disabled onChange={this.handleState}></input>                                    
                                     <span className="checkmark"></span>
                                     </label>
 
                                     <label className="container">False
-                                    <input type="radio"   name="state" value={false} checked={this.state.State? false: "checked"} onChange={this.handleState}></input>                                    
+                                    <input type="radio"   name="state" value={false} checked={this.state.State? false: "checked"} disabled onChange={this.handleState}></input>                                    
                                     <span className="checkmark"></span>
                                     </label>
 
-                                    <p><input className="button" style={{ backgroundColor: "#3e8e41"}} type="submit" value="Submit" /></p>
+                                    <p><input className="button" style={{ backgroundColor: "#DA4E30"}} type="submit" value="Delete" /></p>                                                                        
                                 </form>
                             </div>                                                                                      
                 </>        
             );
     }         
 }
-export default EditDevice;
+export default DeleteDevice;
